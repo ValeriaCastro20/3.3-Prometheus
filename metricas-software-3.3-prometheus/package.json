@@ -1,0 +1,24 @@
+{
+  "name": "metricas-software-3-3-prometheus",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch --watch-preserve-output src/server.js",
+    "doctor": "node scripts/doctor.js",
+    "guided": "node scripts/guided-scenario.js",
+    "concurrent": "node scripts/concurrent-scenario.js",
+    "activity": "node scripts/activity-scenario.js",
+    "metrics": "node scripts/show-metrics.js",
+    "check:guided": "node scripts/check-guided.js",
+    "check:activity": "node scripts/check-activity.js"
+  },
+  "dependencies": {
+    "@prometheus-io/client": "0.16.1",
+    "express": "5.2.1"
+  }
+}

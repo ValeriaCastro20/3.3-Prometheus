@@ -26,7 +26,33 @@ export async function createOrder(req, res) {
 
   // TODO GUIADO:
   // Instrumentar POST /orders utilizando las tres métricas definidas en metrics.js.
-  // La instrumentación debe cubrir también las salidas controladas del handler.
+  const route = "/orders";
+
+requestsInProgress.inc({ route });
+
+const endTimer = requestDuration.startTimer({
+  method: req.method,
+  route
+});
+
+try {
+  // Toda la lógica de POST /orders permanece dentro de este bloque.
+  // Sus respuestas controladas pueden terminar con 400, 504 o 201.
+} finally {
+  const statusCode = String(res.statusCode);
+
+  requestsTotal.inc({
+    method: req.method,
+    route,
+    status_code: statusCode
+  });
+
+  requestsInProgress.dec({ route });
+
+  endTimer({
+    status_code: statusCode
+  });
+}
 
   if (!(scenario in scenarioDelay)) {
     return res.status(400).json({

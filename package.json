@@ -13,6 +13,7 @@
     "guided": "node scripts/guided-scenario.js",
     "concurrent": "node scripts/concurrent-scenario.js",
     "activity": "node scripts/activity-scenario.js",
+    "promql:scenario": "node scripts/promql-scenario.js",
     "metrics": "node scripts/show-metrics.js",
     "check:guided": "node scripts/check-guided.js",
     "check:activity": "node scripts/check-activity.js"
